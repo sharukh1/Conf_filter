@@ -1,8 +1,0 @@
-{
-    "name": "Inspiron",
-    "model": 5888,
-    "features": {
-        "dellmusic": ["audio", "video"],
-        "dellaudio": ["display", "graphics"]
-    }
-}
