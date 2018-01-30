@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+    <!--bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+          p:location="/WEB-INF/jdbc.properties" />
+
+<bean id="dataSource"
+    class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+    p:driverClassName="${jdbc.driverClassName}"
+    p:url="${jdbc.url}"
+    p:username="${jdbc.username}"
+    p:password="${jdbc.password}" /-->
+
+    <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
+    <bean id="s" class="com.Student">
+        <constructor-arg value="1"/>
+        <constructor-arg value="sharukh" type="String"/>
+    </bean>
+     
+    <bean id="p" class="com.Student">
+        <property name="id" value="101"></property>
+        <property name="name" value="sharu"></property>
+    </bean>
+     
+    <bean id="per" class="com.Person">
+        <constructor-arg value="slllllk" />
+        <constructor-arg >
+            <list>
+                <value>1234566</value>
+                <value>100000</value>
+                <value>11111111</value>
+            </list>
+        </constructor-arg>
+    </bean>
+          
+    <bean id="perpro" class="com.Person">
+        <property name="name" value="property name"/>
+        <property name="phno">
+            <list>
+                <value>9999</value>
+                <value>999900</value>
+            </list>
+        </property>
+    </bean>
+          
+          
+    <bean id="dep1" class="com.Department">
+        <property name="id" value="1"/>
+        <property name="name" value="mca"/>
+    </bean>
+          
+    <bean id="dep2" class="com.Department">
+        <property name="id" value="2"/>
+        <property name="name" value="b tech"/>
+    </bean>
+          
+          
+    <bean id="emp1" class="com.Employee">
+        <property name="id" value="1"/>
+        <property name="name" value="sharukh"/>
+        <property name="department">
+            <list>
+                <ref bean="dep1"/> 
+                <ref bean="dep2"/> 
+            </list>                  
+        </property>
+    </bean>
+          
+          
+    <bean id="state1" class="com.State">
+        <property name="id" value="1"/>
+        <property name="name" value="kerala"/>
+    </bean>
+          
+    <bean id="district1" class="com.District">
+        <property name="id" value="1"/>
+        <property name="name" value="Ernakulam"/>
+    </bean>
+          
+          
+    <bean id="emp2"  class="com.Employee" parent="emp1">
+        <property name="location">
+            <map>
+                <entry key-ref="state1" value-ref ="district1"/>
+            </map>
+        </property>
+    </bean>
+          
+          
+<bean id="b" class="com.B">
+    <property name="id" value="1"/>
+    <property name="loc">
+            <map>
+                <entry key-ref="state1" value-ref ="district1"/>
+            </map>
+        </property>
+</bean>
+
+
+<bean id="a" class="com.A" autowire="byName"/>         
+          
+          
+          
+          
+</beans>
+     
+     
+     
+  
+   

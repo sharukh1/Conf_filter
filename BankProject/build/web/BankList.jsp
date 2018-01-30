@@ -1,0 +1,62 @@
+<%-- 
+    Document   : BankList
+    Created on : Dec 14, 2017, 3:03:32 PM
+    Author     : Inspiron
+--%>
+<%@page import="java.sql.*"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+          <link rel="stylesheet" href="css/temp.css">
+    </head>
+    <body>
+        <%
+            String name = (String) session.getAttribute("name");
+            if (!name.equals(null)) {
+        %>
+        <jsp:include page="AdminNav.html"></jsp:include>
+        <h1>Hello!..<%= name%></h1>
+        <h2 align="center"><i>Banks Details</i></h2>
+                    <%
+                        int id;
+                        String bname;
+                        String key;
+                        Connection con = DbConnect.DbConnect.con();
+                        Statement st = con.createStatement();
+                        ResultSet rs = st.executeQuery("select * from bankdb where status=1 ");
+
+                    %><TABLE BORDER="5"  width="400" align="center">
+            <TR>
+                <TH width="20%">ID</TH>
+                <TH width="50%">NAME</TH>
+                <TH width="30%">KEY</TH>
+
+            </TR>
+            <%                   while (rs.next()) {
+
+                    id = rs.getInt(1);
+                    bname = rs.getString(2);
+                    key = rs.getString(3);
+            %>
+
+
+            <TR>
+                <TD align="center"> <%= id%> </TD>
+                <TD align="center"> <%= bname%> </TD>
+                <TD align="center"> <%= key%> </TD>
+
+            </TR>
+            <%    }
+
+            %>
+        </TABLE>
+
+        <%      }
+        %>
+
+
+    </body>
+</html>
